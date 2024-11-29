@@ -12,18 +12,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'master', url: 'https://github.com/DBeneva/StudentRegistryAppDemo'
             }
         }
 
         stage('Install dependencies') {
             steps {
                 script {
-                    if (isUnix()) {
-                        sh 'npm install'
-                    } else {
-                        sh 'npm install'
-                    }
+                    bat 'npm install'
                 }
             }
         }
@@ -31,9 +27,9 @@ pipeline {
         stage('Start application and run tests') {
             steps {
                 script {
-                    sh 'npm start &'
-                    sh 'wait-on http://localhost:8080'
-                    sh 'npm test'
+                    bat 'npm start &'
+                    bat 'wait-on http://localhost:8080'
+                    bat 'npm test'
                 }
             }
         }
