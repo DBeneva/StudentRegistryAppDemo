@@ -14,3 +14,5 @@ suite('Home page', function() {
     assert.ok(body.includes("Registered students: <b>2</b>"));
   });
 });
+
+// comment
